@@ -526,8 +526,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </nav>
     <div class="right-cluster">
       <div class="lang-toggle" role="group" aria-label="Langue / Language">
-        <button type="button" id="btn-fr" class="active" onclick="setLang('fr'); trackNav('menu','Langue FR')">FR</button>
-        <button type="button" id="btn-en" onclick="setLang('en'); trackNav('menu','Langue EN')">EN</button>
+        <button type="button" id="btn-fr" class="active" onclick="setLang('fr'); trackNav('menu','lang_fr')">FR</button>
+        <button type="button" id="btn-en" onclick="setLang('en'); trackNav('menu','lang_en')">EN</button>
       </div>
       <div class="status-pill"><span class="dot"></span><span class="long" data-i18n="status">Disponible · à distance</span></div>
     </div>
@@ -543,8 +543,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <h1 data-i18n="hero_h1">Vos tags collectent.<br>Vos données <span class="accent">tiennent la route.</span></h1>
           <p class="lead" data-i18n="hero_lead">Depuis 8 ans, je conçois, déploie et audite des dispositifs de tracking pour des marques comme EDF, PSA, BMW, Danone ou Clarins. Je maîtrise GA4, TagCommander, GTM et Didomi, de la collecte des données jusqu'à la conformité RGPD.</p>
           <div class="hero-cta">
-            <a class="btn btn-primary" href="#contact" data-i18n="hero_cta1" onclick="trackNav('cta','discuter de votre projet')">Discuter de votre projet</a>
-            <a class="btn btn-ghost" href="#offre" data-i18n="hero_cta2" onclick="trackNav('cta','voir le tjm et les modalités')">Voir le TJM &amp; les modalités</a>
+            <a class="btn btn-primary" href="#contact" data-i18n="hero_cta1" onclick="trackNav('cta','contact_cta')">Discuter de votre projet</a>
+            <a class="btn btn-ghost" href="#offre" data-i18n="hero_cta2" onclick="trackNav('cta','offer_cta')">Voir le TJM &amp; les modalités</a>
           </div>
           <div class="tjm-badge">
             <div class="tjm-item"><div class="num">600&nbsp;€</div><div class="lbl" data-i18n="tjm_lbl1">TJM</div></div>
@@ -879,9 +879,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   };
 
-  function trackNav(type, name){
+  function trackNav(clickType, clickLabel){
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'navigation_click', type: type, name: name });
+    window.dataLayer.push({ event: 'navigation_click', click_type: clickType, click_label: clickLabel });
   }
 
   function trackContact(method){
