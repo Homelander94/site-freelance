@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="doc-title">Akongo Agamaka — Expert Tracking & Web Analytics Freelance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1A2A;
+    --surface:#132540;
+    --surface-2:#1A3252;
+    --hair:rgba(234,240,246,0.09);
+    --hair-strong:rgba(234,240,246,0.16);
+    --text:#EAF0F6;
+    --muted:#8CA0B7;
+    --muted-2:#5E7288;
+    --signal:#3EDC94;
+    --warn:#FFB454;
+    --info:#6FB6FF;
+    --max:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk',sans-serif;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  ::selection{background:var(--signal); color:#06130C;}
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--signal);
+    outline-offset:3px;
+  }
+
+  header.top{
+    position:sticky; top:0; z-index:40;
+    background:rgba(14,26,42,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--hair);
+  }
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px; max-width:var(--max); margin:0 auto; gap:16px;
+  }
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand .mark{
+    width:34px; height:34px; border-radius:8px;
+    background:linear-gradient(135deg, var(--signal), var(--info));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13px; color:#06130C;
+  }
+  .brand span{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px;}
+  nav.links{display:flex; gap:26px; font-size:14px; color:var(--muted);}
+  nav.links a{text-decoration:none; transition:color .15s;}
+  nav.links a:hover{color:var(--text);}
+
+  .right-cluster{display:flex; align-items:center; gap:14px;}
+  .lang-toggle{display:flex; border:1px solid var(--hair-strong); border-radius:100px; padding:3px; gap:2px;}
+  .lang-toggle button{
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; font-weight:600;
+    border:none; background:transparent; color:var(--muted); padding:6px 12px; border-radius:100px;
+    cursor:pointer; transition:background .15s, color .15s;
+  }
+  .lang-toggle button.active{background:var(--signal); color:#06130C;}
+
+  .status-pill{
+    display:flex; align-items:center; gap:7px;
+    font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--signal);
+    border:1px solid rgba(62,220,148,0.35); padding:6px 12px; border-radius:100px;
+    background:rgba(62,220,148,0.06); white-space:nowrap;
+  }
+  .status-pill .dot{width:6px; height:6px; border-radius:50%; background:var(--signal); box-shadow:0 0 0 3px rgba(62,220,148,0.18); animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+  @media (max-width:900px){ nav.links{display:none;} }
+  @media (max-width:560px){ .status-pill span.long{display:none;} }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--muted-2);
+    letter-spacing:0.02em; margin-bottom:14px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:"//"; color:var(--signal);}
+
+  .hero{padding:76px 0 60px;}
+  .hero-grid{display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;}
+  @media (max-width:920px){ .hero-grid{grid-template-columns:1fr; gap:40px;} }
+  .hero h1{font-size:clamp(34px,4.6vw,54px); line-height:1.06; font-weight:700;}
+  .hero h1 .accent{color:var(--signal);}
+  .hero p.lead{margin-top:20px; font-size:17px; color:var(--muted); max-width:52ch;}
+  .hero-cta{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .btn{
+    font-family:'Inter',sans-serif; font-weight:600; font-size:14.5px;
+    padding:13px 22px; border-radius:9px; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px; border:1px solid transparent;
+    transition:transform .15s ease, background .15s ease, border-color .15s ease;
+    cursor:pointer;
+  }
+  .btn-primary{background:var(--signal); color:#06130C;}
+  .btn-primary:hover{transform:translateY(-1px); background:#57e6a4;}
+  .btn-ghost{border-color:var(--hair-strong); color:var(--text); background:transparent;}
+  .btn-ghost:hover{border-color:var(--signal); color:var(--signal);}
+
+  .tjm-badge{margin-top:36px; display:flex; gap:26px; flex-wrap:wrap;}
+  .tjm-item{font-family:'IBM Plex Mono',monospace;}
+  .tjm-item .num{font-size:22px; color:var(--text); font-weight:600;}
+  .tjm-item .lbl{font-size:11.5px; color:var(--muted-2); text-transform:uppercase; letter-spacing:.06em;}
+
+  .console{
+    background:var(--surface); border:1px solid var(--hair-strong); border-radius:12px;
+    overflow:hidden; box-shadow:0 24px 60px -20px rgba(0,0,0,0.55);
+  }
+  .console-bar{display:flex; align-items:center; gap:8px; padding:11px 14px; border-bottom:1px solid var(--hair); background:var(--surface-2);}
+  .console-bar .d{width:9px; height:9px; border-radius:50%; background:var(--hair-strong);}
+  .console-title{margin-left:8px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--muted);}
+  .console-body{padding:18px 16px; min-height:230px; font-family:'IBM Plex Mono',monospace; font-size:12.6px;}
+  .console-line{
+    display:grid; grid-template-columns:96px 1fr auto; gap:10px; align-items:center;
+    padding:5px 0; opacity:0; transform:translateY(4px);
+    animation:lineIn .4s ease forwards;
+    border-bottom:1px solid rgba(255,255,255,0.04);
+  }
+  .console-line .ts{color:var(--muted-2);}
+  .console-line .evt{color:var(--text);}
+  .console-line .evt b{color:var(--info); font-weight:500;}
+  .console-line .status{color:var(--signal); text-align:right; white-space:nowrap;}
+  .console-line .status.warn{color:var(--warn);}
+  @keyframes lineIn{to{opacity:1; transform:translateY(0);}}
+  .console-caret{display:inline-block; width:7px; height:13px; background:var(--signal); margin-left:2px; animation:blink 1s steps(1) infinite;}
+  @keyframes blink{50%{opacity:0;}}
+  @media (prefers-reduced-motion: reduce){
+    .console-line{animation:none; opacity:1; transform:none;}
+    .console-caret{animation:none;}
+    .status-pill .dot{animation:none;}
+  }
+
+  section{padding:64px 0; border-top:1px solid var(--hair);}
+  .section-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:34px; flex-wrap:wrap; gap:10px;}
+  .section-head h2{font-size:clamp(24px,2.6vw,32px); font-weight:600;}
+  .section-note{font-size:13.5px; color:var(--muted-2); max-width:34ch; text-align:right;}
+  @media (max-width:700px){ .section-note{text-align:left;} }
+
+  .about-grid{display:grid; grid-template-columns:1.3fr 0.7fr; gap:48px;}
+  @media (max-width:820px){ .about-grid{grid-template-columns:1fr;} }
+  .about-text p{color:var(--muted); font-size:15.5px; max-width:60ch;}
+  .about-text p + p{margin-top:14px;}
+  .fact-list{display:flex; flex-direction:column; gap:16px;}
+  .fact{border:1px solid var(--hair); border-radius:10px; padding:14px 16px; background:var(--surface);}
+  .fact .k{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted-2); text-transform:uppercase; letter-spacing:.05em;}
+  .fact .v{margin-top:4px; font-size:14.5px; font-weight:500;}
+
+  .skill-groups{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  @media (max-width:820px){ .skill-groups{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .skill-groups{grid-template-columns:1fr;} }
+  .skill-card{border:1px solid var(--hair); border-radius:12px; padding:20px; background:var(--surface);}
+  .skill-card h3{font-size:14px; color:var(--info); font-family:'IBM Plex Mono',monospace; font-weight:500; margin-bottom:14px; text-transform:uppercase; letter-spacing:.04em;}
+  .chip-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{font-size:12.8px; padding:6px 11px; border-radius:6px; background:var(--surface-2); border:1px solid var(--hair-strong); color:var(--text);}
+
+  .xp-list{display:flex; flex-direction:column; gap:22px;}
+  .xp-row{display:grid; grid-template-columns:200px 1fr 120px; gap:18px; align-items:center;}
+  @media (max-width:760px){
+    .xp-row{grid-template-columns:1fr; gap:8px;}
+    .xp-bar-wrap{order:3;}
+    .xp-duration{order:2; text-align:left !important;}
+  }
+  .xp-who .company{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15.5px;}
+  .xp-who .role{color:var(--muted); font-size:13px; margin-top:2px;}
+  .xp-bar-wrap{background:var(--surface); border-radius:8px; height:34px; position:relative; overflow:hidden; border:1px solid var(--hair);}
+  .xp-bar{
+    position:absolute; left:0; top:0; bottom:0;
+    background:linear-gradient(90deg, rgba(62,220,148,0.55), rgba(111,182,255,0.45));
+    border-radius:8px; display:flex; align-items:center; padding:0 10px;
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:#06130C;
+  }
+  .xp-duration{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted-2); text-align:right;}
+  .xp-clients{margin-top:6px; font-size:12.5px; color:var(--muted-2);}
+
+  .client-cloud{display:flex; flex-wrap:wrap; gap:10px;}
+  .client-chip{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--muted); border:1px solid var(--hair); border-radius:7px; padding:8px 13px; background:var(--surface);}
+
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+  @media (max-width:700px){ .two-col{grid-template-columns:1fr;} }
+
+  .offer{
+    border:1px solid rgba(62,220,148,0.3); border-radius:16px; padding:40px;
+    background:radial-gradient(circle at 15% 20%, rgba(62,220,148,0.08), transparent 55%), var(--surface);
+    display:grid; grid-template-columns:1.2fr 0.8fr; gap:40px; align-items:center;
+  }
+  @media (max-width:820px){ .offer{grid-template-columns:1fr; padding:28px;} }
+  .offer h2{font-size:26px; margin-bottom:14px;}
+  .offer ul{list-style:none; margin:18px 0 0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .offer li{display:flex; gap:10px; font-size:14.5px; color:var(--text);}
+  .offer li::before{content:"✓"; color:var(--signal); font-weight:700;}
+  .offer-tjm{text-align:center; border:1px solid var(--hair-strong); border-radius:12px; padding:28px 18px; background:var(--ink);}
+  .offer-tjm .amount{font-family:'Space Grotesk',sans-serif; font-size:44px; font-weight:700; color:var(--signal);}
+  .offer-tjm .amount sup{font-size:16px; color:var(--muted); font-weight:500;}
+  .offer-tjm .unit{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--muted-2); text-transform:uppercase; letter-spacing:.06em; margin-top:4px;}
+  .offer-tjm .split{margin:16px 0; height:1px; background:var(--hair);}
+  .offer-tjm .flag{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--info);}
+
+  .contact{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:26px;}
+  .contact h2{font-size:clamp(26px,3.4vw,38px); max-width:18ch;}
+  .contact-actions{display:flex; flex-direction:column; gap:12px; min-width:260px;}
+  .contact-link{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    border:1px solid var(--hair-strong); border-radius:10px; padding:14px 16px;
+    text-decoration:none; font-size:14px; transition:border-color .15s, background .15s;
+  }
+  .contact-link:hover{border-color:var(--signal); background:rgba(62,220,148,0.05);}
+  .contact-link .k{color:var(--muted-2); font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.05em;}
+  .contact-link .v{font-weight:500;}
+
+  footer{padding:34px 0 50px; color:var(--muted-2); font-size:12.5px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="topbar">
+    <div class="brand">
+      <div class="mark">AA</div>
+      <span>Akongo Agamaka</span>
+    </div>
+    <nav class="links">
+      <a href="#expertise" data-i18n="nav_expertise">Expertise</a>
+      <a href="#experiences" data-i18n="nav_xp">Expériences</a>
+      <a href="#clients" data-i18n="nav_clients">Clients</a>
+      <a href="#offre" data-i18n="nav_offer">Offre</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+    </nav>
+    <div class="right-cluster">
+      <div class="lang-toggle" role="group" aria-label="Langue / Language">
+        <button type="button" id="btn-fr" class="active" onclick="setLang('fr')">FR</button>
+        <button type="button" id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <div class="status-pill"><span class="dot"></span><span class="long" data-i18n="status">Disponible — full télétravail</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" style="border-top:none;">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">expert_tracking.freelance</div>
+        <h1 data-i18n="hero_h1">Vos tags collectent.<br>Vos données <span class="accent">tiennent la route.</span></h1>
+        <p class="lead" data-i18n="hero_lead">7 ans à concevoir, implémenter et auditer des dispositifs de tracking pour des marques comme EDF, PSA, BMW, Danone ou Clarins. GA4, TagCommander, GTM, Didomi — de la collecte à la conformité RGPD, sans approximation.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#contact" data-i18n="hero_cta1">Discuter de votre projet</a>
+          <a class="btn btn-ghost" href="#offre" data-i18n="hero_cta2">Voir le TJM &amp; les modalités</a>
+        </div>
+        <div class="tjm-badge">
+          <div class="tjm-item"><div class="num">600&nbsp;€</div><div class="lbl" data-i18n="tjm_lbl1">TJM</div></div>
+          <div class="tjm-item"><div class="num">100%</div><div class="lbl" data-i18n="tjm_lbl2">Télétravail</div></div>
+          <div class="tjm-item"><div class="num">7</div><div class="lbl" data-i18n="tjm_lbl3">Ans d'expérience</div></div>
+        </div>
+      </div>
+
+      <div class="console" aria-hidden="true">
+        <div class="console-bar">
+          <div class="d" style="background:#FF6459;"></div>
+          <div class="d" style="background:#FFC048;"></div>
+          <div class="d" style="background:#3EDC94;"></div>
+          <span class="console-title">dataLayer — live QA</span>
+        </div>
+        <div class="console-body" id="console-body"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="apropos">
+    <div class="wrap about-grid">
+      <div class="about-text">
+        <div class="eyebrow" data-i18n="about_eyebrow">profil</div>
+        <h2 style="font-size:26px; margin-bottom:16px;" data-i18n="about_h2">Consultant tracking &amp; web analytics, indépendant</h2>
+        <p data-i18n="about_p1">Je conçois et implémente des solutions de tracking et de tag management adaptées aux enjeux digitaux de chaque client. Expert TagCommander, TrustCommander, GTM, GA4, Didomi et Adobe Analytics, je m'assure que la donnée collectée soit fiable, exploitable — et conforme.</p>
+        <p data-i18n="about_p2">J'accompagne aussi la mise en conformité RGPD / CPRA des sites, en lien direct avec les équipes marketing et IT, en méthode agile. L'objectif&nbsp;: transformer la donnée en véritable levier de décision, pas en tableau qu'on ne relit jamais.</p>
+      </div>
+      <div class="fact-list">
+        <div class="fact"><div class="k" data-i18n="fact_loc_k">Localisation</div><div class="v">Saint-Maur-des-Fossés (94) — Île-de-France</div></div>
+        <div class="fact"><div class="k" data-i18n="fact_edu_k">Formation</div><div class="v" data-i18n="fact_edu_v">Master e-commerce — UPEC (2015–2017)</div></div>
+        <div class="fact"><div class="k" data-i18n="fact_trainer_k">Formateur</div><div class="v" data-i18n="fact_trainer_v">Google Analytics &amp; GTM (2020–2022)</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="expertise">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow" data-i18n="skills_eyebrow">compétences</div>
+          <h2 data-i18n="skills_h2">Le bon outil pour chaque brief</h2>
+        </div>
+        <div class="section-note" data-i18n="skills_note">Stack utilisée en production chez EDF, PSA, BMW, Clarins et une douzaine d'autres marques.</div>
+      </div>
+      <div class="skill-groups">
+        <div class="skill-card">
+          <h3>Analytics</h3>
+          <div class="chip-row"><span class="chip">GA4</span><span class="chip">Adobe Analytics</span><span class="chip">Looker Studio</span><span class="chip">Firebase</span><span class="chip">Piano</span></div>
+        </div>
+        <div class="skill-card">
+          <h3>TMS</h3>
+          <div class="chip-row"><span class="chip">TagCommander</span><span class="chip">GTM</span><span class="chip">Adobe Launch</span></div>
+        </div>
+        <div class="skill-card">
+          <h3>CMP</h3>
+          <div class="chip-row"><span class="chip">Didomi</span><span class="chip">TrustCommander</span></div>
+        </div>
+        <div class="skill-card">
+          <h3>CRO</h3>
+          <div class="chip-row"><span class="chip">Content Square</span><span class="chip">AB Tasty</span></div>
+        </div>
+        <div class="skill-card">
+          <h3 data-i18n="skill_pm_title">Gestion de projet</h3>
+          <div class="chip-row">
+            <span class="chip" data-i18n="chip_pm1">Plans de marquage</span>
+            <span class="chip" data-i18n="chip_pm2">Recette &amp; QA</span>
+            <span class="chip">Documentation</span>
+            <span class="chip" data-i18n="chip_pm3">Formation d'équipes</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3 data-i18n="skill_lang_title">Langues</h3>
+          <div class="chip-row">
+            <span class="chip" data-i18n="chip_lang1">Français — natif</span>
+            <span class="chip" data-i18n="chip_lang2">Anglais — courant</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experiences">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow" data-i18n="xp_eyebrow">parcours</div>
+          <h2 data-i18n="xp_h2">Missions récentes</h2>
+        </div>
+        <div class="section-note" data-i18n="xp_note">Largeur de barre proportionnelle à la durée de la mission.</div>
+      </div>
+      <div class="xp-list">
+
+        <div class="xp-row">
+          <div class="xp-who"><div class="company">Publicis Groupe</div><div class="role" data-i18n="role_publicis">Tracking Expert — Freelance</div></div>
+          <div>
+            <div class="xp-bar-wrap"><div class="xp-bar" style="width:14%;"><span data-i18n="dur_publicis">4 mois</span></div></div>
+            <div class="xp-clients">McDonald's · General Motors · Danone · Nestlé (Purina)</div>
+          </div>
+          <div class="xp-duration" data-i18n="dates_publicis">Juin – Oct 2025</div>
+        </div>
+
+        <div class="xp-row">
+          <div class="xp-who"><div class="company">Clarins</div><div class="role" data-i18n="role_clarins">Tracking Expert — Freelance</div></div>
+          <div>
+            <div class="xp-bar-wrap"><div class="xp-bar" style="width:82%;"><span data-i18n="dur_clarins">49 mois</span></div></div>
+            <div class="xp-clients" data-i18n="ctx_clarins">Migration TrustCommander → Didomi · UA → GA4 360</div>
+          </div>
+          <div class="xp-duration" data-i18n="dates_clarins">Depuis juil. 2022</div>
+        </div>
+
+        <div class="xp-row">
+          <div class="xp-who"><div class="company">Accenture</div><div class="role" data-i18n="role_accenture">Digital Marketing Analyst Senior</div></div>
+          <div>
+            <div class="xp-bar-wrap"><div class="xp-bar" style="width:50%;"><span data-i18n="dur_accenture">30 mois</span></div></div>
+            <div class="xp-clients">Sofinco · Peugeot (PSA) · BMW · Burger King · EDF · Fendi</div>
+          </div>
+          <div class="xp-duration">2020 – 2022</div>
+        </div>
+
+        <div class="xp-row">
+          <div class="xp-who"><div class="company">iProspect</div><div class="role" data-i18n="role_iprospect">Consultant Web Analyst</div></div>
+          <div>
+            <div class="xp-bar-wrap"><div class="xp-bar" style="width:37%;"><span data-i18n="dur_iprospect">22 mois</span></div></div>
+            <div class="xp-clients">Betclic · PFG · BNP Cardif · Puy du Fou · Pairi Daiza · Estée Lauder</div>
+          </div>
+          <div class="xp-duration">2018 – 2020</div>
+        </div>
+
+        <div class="xp-row">
+          <div class="xp-who"><div class="company">SNCF</div><div class="role" data-i18n="role_sncf">Chef de projet web — Ouibus &amp; Oui SNCF</div></div>
+          <div>
+            <div class="xp-bar-wrap"><div class="xp-bar" style="width:34%;"><span data-i18n="dur_sncf">20 mois</span></div></div>
+            <div class="xp-clients" data-i18n="ctx_sncf">Animation commerciale du site</div>
+          </div>
+          <div class="xp-duration">2016 – 2017</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="clients">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow" data-i18n="clients_eyebrow">références</div>
+          <h2 data-i18n="clients_h2">Marques accompagnées</h2>
+        </div>
+      </div>
+      <div class="client-cloud">
+        <span class="client-chip">EDF</span>
+        <span class="client-chip">Peugeot (PSA)</span>
+        <span class="client-chip">BMW</span>
+        <span class="client-chip">Burger King</span>
+        <span class="client-chip">Fendi</span>
+        <span class="client-chip">Sofinco</span>
+        <span class="client-chip">Clarins</span>
+        <span class="client-chip">McDonald's</span>
+        <span class="client-chip">General Motors</span>
+        <span class="client-chip">Danone</span>
+        <span class="client-chip">Nestlé (Purina)</span>
+        <span class="client-chip">Betclic</span>
+        <span class="client-chip">BNP Cardif</span>
+        <span class="client-chip">Puy du Fou</span>
+        <span class="client-chip">Pairi Daiza</span>
+        <span class="client-chip">Pierre &amp; Vacances</span>
+        <span class="client-chip">Estée Lauder</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="offre">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow" data-i18n="offer_eyebrow">modalités</div>
+          <h2 data-i18n="offer_h2">Une mission, un cadre clair</h2>
+        </div>
+      </div>
+      <div class="offer">
+        <div>
+          <div class="eyebrow" style="margin-bottom:6px;" data-i18n="offer_eyebrow2">disponibilité</div>
+          <h2 data-i18n="offer_h2b">Prêt à intervenir sur votre dispositif de tracking</h2>
+          <ul>
+            <li data-i18n="offer_li1">Audit, implémentation ou refonte de plan de marquage</li>
+            <li data-i18n="offer_li2">Migration GA4, mise en conformité RGPD / CPRA</li>
+            <li data-i18n="offer_li3">Full télétravail — déplacements ponctuels possibles</li>
+            <li data-i18n="offer_li4">Missions courtes ou longues, seul ou en accompagnement d'équipe</li>
+          </ul>
+        </div>
+        <div class="offer-tjm">
+          <div class="amount">600&nbsp;€<sup data-i18n="offer_perday">/j</sup></div>
+          <div class="unit" data-i18n="offer_unit">TJM indicatif</div>
+          <div class="split"></div>
+          <div class="flag" data-i18n="offer_flag">100% télétravail</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <h2 data-i18n="contact_h2">Un besoin de tracking à cadrer&nbsp;? Parlons-en.</h2>
+      <div class="contact-actions">
+        <a class="contact-link" href="mailto:akongo.agamaka@outlook.com">
+          <span><span class="k" data-i18n="contact_email_k">Email</span><br><span class="v">akongo.agamaka@outlook.com</span></span>
+          <span>→</span>
+        </a>
+        <a class="contact-link" href="tel:+33667123533">
+          <span><span class="k" data-i18n="contact_phone_k">Téléphone</span><br><span class="v" data-i18n="contact_phone_v">06 67 12 35 33</span></span>
+          <span>→</span>
+        </a>
+        <a class="contact-link" href="#" onclick="return false;">
+          <span><span class="k">LinkedIn</span><br><span class="v" data-i18n="contact_linkedin_v">À compléter</span></span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" style="width:100%; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+    <span data-i18n="footer_copy">© 2026 Akongo Agamaka — Expert tracking &amp; web analytics</span>
+    <span class="mono">Saint-Maur-des-Fossés · France</span>
+  </div>
+</footer>
+
+<script>
+  const translations = {
+    fr: {
+      nav_expertise: "Expertise", nav_xp: "Expériences", nav_clients: "Clients", nav_offer: "Offre", nav_contact: "Contact",
+      status: "Disponible — full télétravail",
+      hero_h1: 'Vos tags collectent.<br>Vos données <span class="accent">tiennent la route.</span>',
+      hero_lead: "7 ans à concevoir, implémenter et auditer des dispositifs de tracking pour des marques comme EDF, PSA, BMW, Danone ou Clarins. GA4, TagCommander, GTM, Didomi — de la collecte à la conformité RGPD, sans approximation.",
+      hero_cta1: "Discuter de votre projet",
+      hero_cta2: "Voir le TJM &amp; les modalités",
+      tjm_lbl1: "TJM", tjm_lbl2: "Télétravail", tjm_lbl3: "Ans d'expérience",
+      about_eyebrow: "profil",
+      about_h2: "Consultant tracking &amp; web analytics, indépendant",
+      about_p1: "Je conçois et implémente des solutions de tracking et de tag management adaptées aux enjeux digitaux de chaque client. Expert TagCommander, TrustCommander, GTM, GA4, Didomi et Adobe Analytics, je m'assure que la donnée collectée soit fiable, exploitable — et conforme.",
+      about_p2: "J'accompagne aussi la mise en conformité RGPD / CPRA des sites, en lien direct avec les équipes marketing et IT, en méthode agile. L'objectif&nbsp;: transformer la donnée en véritable levier de décision, pas en tableau qu'on ne relit jamais.",
+      fact_loc_k: "Localisation", fact_edu_k: "Formation", fact_edu_v: "Master e-commerce — UPEC (2015–2017)",
+      fact_trainer_k: "Formateur", fact_trainer_v: "Google Analytics &amp; GTM (2020–2022)",
+      skills_eyebrow: "compétences", skills_h2: "Le bon outil pour chaque brief",
+      skills_note: "Stack utilisée en production chez EDF, PSA, BMW, Clarins et une douzaine d'autres marques.",
+      skill_pm_title: "Gestion de projet", skill_lang_title: "Langues",
+      chip_pm1: "Plans de marquage", chip_pm2: "Recette &amp; QA", chip_pm3: "Formation d'équipes",
+      chip_lang1: "Français — natif", chip_lang2: "Anglais — courant",
+      xp_eyebrow: "parcours", xp_h2: "Missions récentes",
+      xp_note: "Largeur de barre proportionnelle à la durée de la mission.",
+      role_publicis: "Tracking Expert — Freelance", dur_publicis: "4 mois", dates_publicis: "Juin – Oct 2025",
+      role_clarins: "Tracking Expert — Freelance", dur_clarins: "49 mois", dates_clarins: "Depuis juil. 2022",
+      ctx_clarins: "Migration TrustCommander → Didomi · UA → GA4 360",
+      role_accenture: "Digital Marketing Analyst Senior", dur_accenture: "30 mois",
+      role_iprospect: "Consultant Web Analyst", dur_iprospect: "22 mois",
+      role_sncf: "Chef de projet web — Ouibus &amp; Oui SNCF", dur_sncf: "20 mois",
+      ctx_sncf: "Animation commerciale du site",
+      clients_eyebrow: "références", clients_h2: "Marques accompagnées",
+      offer_eyebrow: "modalités", offer_h2: "Une mission, un cadre clair",
+      offer_eyebrow2: "disponibilité", offer_h2b: "Prêt à intervenir sur votre dispositif de tracking",
+      offer_li1: "Audit, implémentation ou refonte de plan de marquage",
+      offer_li2: "Migration GA4, mise en conformité RGPD / CPRA",
+      offer_li3: "Full télétravail — déplacements ponctuels possibles",
+      offer_li4: "Missions courtes ou longues, seul ou en accompagnement d'équipe",
+      offer_perday: "/j", offer_unit: "TJM indicatif", offer_flag: "100% télétravail",
+      contact_h2: "Un besoin de tracking à cadrer&nbsp;? Parlons-en.",
+      contact_email_k: "Email", contact_phone_k: "Téléphone", contact_phone_v: "06 67 12 35 33",
+      contact_linkedin_v: "À compléter",
+      footer_copy: "© 2026 Akongo Agamaka — Expert tracking &amp; web analytics",
+      title: "Akongo Agamaka — Expert Tracking &amp; Web Analytics Freelance"
+    },
+    en: {
+      nav_expertise: "Expertise", nav_xp: "Experience", nav_clients: "Clients", nav_offer: "Offer", nav_contact: "Contact",
+      status: "Available — fully remote",
+      hero_h1: 'Your tags fire.<br>Your data <span class="accent">holds up.</span>',
+      hero_lead: "7 years designing, implementing and auditing tracking setups for brands like EDF, PSA, BMW, Danone and Clarins. GA4, TagCommander, GTM, Didomi — from data collection to GDPR compliance, no guesswork.",
+      hero_cta1: "Let's talk about your project",
+      hero_cta2: "See day rate &amp; terms",
+      tjm_lbl1: "Day rate", tjm_lbl2: "Remote", tjm_lbl3: "Years of experience",
+      about_eyebrow: "profile",
+      about_h2: "Independent tracking &amp; web analytics consultant",
+      about_p1: "I design and implement tracking and tag management solutions tailored to each client's digital challenges. Expert in TagCommander, TrustCommander, GTM, GA4, Didomi and Adobe Analytics, I make sure the data collected is reliable, usable — and compliant.",
+      about_p2: "I also support GDPR / CPRA compliance for websites, working directly with marketing and IT teams in an agile setup. The goal: turn data into a real decision-making driver, not a dashboard nobody looks at twice.",
+      fact_loc_k: "Location", fact_edu_k: "Education", fact_edu_v: "Master's in E-commerce — UPEC (2015–2017)",
+      fact_trainer_k: "Trainer", fact_trainer_v: "Google Analytics &amp; GTM (2020–2022)",
+      skills_eyebrow: "skills", skills_h2: "The right tool for every brief",
+      skills_note: "Stack used in production at EDF, PSA, BMW, Clarins and a dozen other brands.",
+      skill_pm_title: "Project management", skill_lang_title: "Languages",
+      chip_pm1: "Tagging plans", chip_pm2: "QA &amp; testing", chip_pm3: "Team training",
+      chip_lang1: "French — native", chip_lang2: "English — fluent",
+      xp_eyebrow: "career", xp_h2: "Recent engagements",
+      xp_note: "Bar width proportional to engagement duration.",
+      role_publicis: "Tracking Expert — Freelancer", dur_publicis: "4 months", dates_publicis: "Jun – Oct 2025",
+      role_clarins: "Tracking Expert — Freelancer", dur_clarins: "49 months", dates_clarins: "Since Jul 2022",
+      ctx_clarins: "TrustCommander → Didomi migration · UA → GA4 360",
+      role_accenture: "Digital Marketing Analyst Senior", dur_accenture: "30 months",
+      role_iprospect: "Web Analytics Consultant", dur_iprospect: "22 months",
+      role_sncf: "Web Project Manager — Ouibus &amp; Oui SNCF", dur_sncf: "20 months",
+      ctx_sncf: "Commercial management of the site",
+      clients_eyebrow: "track record", clients_h2: "Brands I've worked with",
+      offer_eyebrow: "terms", offer_h2: "One engagement, clear terms",
+      offer_eyebrow2: "availability", offer_h2b: "Ready to work on your tracking setup",
+      offer_li1: "Tracking audit, implementation or full tagging plan redesign",
+      offer_li2: "GA4 migration, GDPR / CPRA compliance",
+      offer_li3: "Fully remote — occasional on-site visits possible",
+      offer_li4: "Short or long-term engagements, solo or embedded with your team",
+      offer_perday: "/day", offer_unit: "Indicative day rate", offer_flag: "100% remote",
+      contact_h2: "Need help scoping a tracking project&nbsp;? Let's talk.",
+      contact_email_k: "Email", contact_phone_k: "Phone", contact_phone_v: "+33 6 67 12 35 33",
+      contact_linkedin_v: "To be added",
+      footer_copy: "© 2026 Akongo Agamaka — Tracking &amp; web analytics expert",
+      title: "Akongo Agamaka — Freelance Tracking &amp; Web Analytics Expert"
+    }
+  };
+
+  function setLang(lang){
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if(translations[lang][key] !== undefined){
+        el.innerHTML = translations[lang][key];
+      }
+    });
+    document.documentElement.lang = lang;
+    document.getElementById('doc-title').textContent = translations[lang].title.replace(/&amp;/g,'&');
+    document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  }
+
+  const events = [
+    { ts: "14:02:11.204", label: "pageview", target: "GA4", status: "200 OK" },
+    { ts: "14:02:11.398", label: "consent_update", target: "Didomi CMP", status: "200 OK" },
+    { ts: "14:02:11.512", label: "view_item", target: "Meta Pixel", status: "200 OK" },
+    { ts: "14:02:11.687", label: "container_load", target: "GTM", status: "200 OK" },
+    { ts: "14:02:11.902", label: "custom_event", target: "TagCommander", status: "200 OK" },
+    { ts: "14:02:12.045", label: "purchase", target: "GA4 Ecommerce", status: "200 OK" },
+    { ts: "14:02:12.211", label: "cmp_missing", target: "Adobe Launch", status: "pending" },
+    { ts: "14:02:12.340", label: "server_side", target: "TagCommander SS", status: "200 OK" },
+  ];
+
+  const body = document.getElementById('console-body');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function renderLine(evt, delay){
+    const row = document.createElement('div');
+    row.className = 'console-line';
+    row.style.animationDelay = reduceMotion ? '0s' : delay + 'ms';
+    const warn = evt.status !== '200 OK';
+    row.innerHTML = `<span class="ts">${evt.ts}</span><span class="evt">${evt.label} → <b>${evt.target}</b></span><span class="status${warn ? ' warn' : ''}">${evt.status}</span>`;
+    return row;
+  }
+
+  function playSequence(){
+    body.innerHTML = '';
+    events.forEach((evt, idx) => { body.appendChild(renderLine(evt, idx * 260)); });
+    const caret = document.createElement('span');
+    caret.className = 'console-caret';
+    const caretLine = document.createElement('div');
+    caretLine.style.paddingTop = '6px';
+    caretLine.appendChild(caret);
+    body.appendChild(caretLine);
+  }
+
+  playSequence();
+  if(!reduceMotion){
+    setInterval(playSequence, events.length * 260 + 3200);
+  }
+
+  setLang('fr');
+</script>
+
+</body>
+</html>
