@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title id="doc-title">Akongo Agamaka · Expert Tracking & Web Analytics Freelance</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2ZGF6JBMM0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-2ZGF6JBMM0');
+</script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
@@ -494,16 +501,16 @@
       <span>Akongo Agamaka</span>
     </div>
     <nav class="links">
-      <a href="#expertise" data-i18n="nav_expertise">Expertise</a>
-      <a href="#experiences" data-i18n="nav_xp">Expériences</a>
-      <a href="#clients" data-i18n="nav_clients">Clients</a>
-      <a href="#offre" data-i18n="nav_offer">Offre</a>
-      <a href="#contact" data-i18n="nav_contact">Contact</a>
+      <a href="#expertise" data-i18n="nav_expertise" onclick="trackNav('menu','expertise')">Expertise</a>
+      <a href="#experiences" data-i18n="nav_xp" onclick="trackNav('menu','experiences')">Expériences</a>
+      <a href="#clients" data-i18n="nav_clients" onclick="trackNav('menu','clients')">Clients</a>
+      <a href="#offre" data-i18n="nav_offer" onclick="trackNav('menu','offre')">Offre</a>
+      <a href="#contact" data-i18n="nav_contact" onclick="trackNav('menu','contact')">Contact</a>
     </nav>
     <div class="right-cluster">
       <div class="lang-toggle" role="group" aria-label="Langue / Language">
-        <button type="button" id="btn-fr" class="active" onclick="setLang('fr')">FR</button>
-        <button type="button" id="btn-en" onclick="setLang('en')">EN</button>
+        <button type="button" id="btn-fr" class="active" onclick="setLang('fr'); trackNav('menu','Langue FR')">FR</button>
+        <button type="button" id="btn-en" onclick="setLang('en'); trackNav('menu','Langue EN')">EN</button>
       </div>
       <div class="status-pill"><span class="dot"></span><span class="long" data-i18n="status">Disponible · full télétravail</span></div>
     </div>
@@ -519,8 +526,8 @@
           <h1 data-i18n="hero_h1">Vos tags collectent.<br>Vos données <span class="accent">tiennent la route.</span></h1>
           <p class="lead" data-i18n="hero_lead">Depuis 8 ans, je conçois, déploie et audite des dispositifs de tracking pour des marques comme EDF, PSA, BMW, Danone ou Clarins. Je maîtrise GA4, TagCommander, GTM et Didomi, de la collecte des données jusqu'à la conformité RGPD.</p>
           <div class="hero-cta">
-            <a class="btn btn-primary" href="#contact" data-i18n="hero_cta1">Discuter de votre projet</a>
-            <a class="btn btn-ghost" href="#offre" data-i18n="hero_cta2">Voir le TJM &amp; les modalités</a>
+            <a class="btn btn-primary" href="#contact" data-i18n="hero_cta1" onclick="trackNav('cta','discuter de votre projet')">Discuter de votre projet</a>
+            <a class="btn btn-ghost" href="#offre" data-i18n="hero_cta2" onclick="trackNav('cta','voir le tjm et les modalités')">Voir le TJM &amp; les modalités</a>
           </div>
           <div class="tjm-badge">
             <div class="tjm-item"><div class="num">600&nbsp;€</div><div class="lbl" data-i18n="tjm_lbl1">TJM</div></div>
@@ -741,15 +748,15 @@
     <div class="wrap contact">
       <h2 data-i18n="contact_h2">Un besoin de tracking à cadrer&nbsp;? Parlons-en.</h2>
       <div class="contact-actions">
-        <a class="contact-link" href="mailto:akongo.agamaka@outlook.com">
+        <a class="contact-link" href="mailto:akongo.agamaka@outlook.com" onclick="trackContact('email')">
           <span><span class="k" data-i18n="contact_email_k">Email</span><br><span class="v">akongo.agamaka@outlook.com</span></span>
           <span>→</span>
         </a>
-        <a class="contact-link" href="tel:+33667123533">
+        <a class="contact-link" href="tel:+33667123533" onclick="trackContact('phone')">
           <span><span class="k" data-i18n="contact_phone_k">Téléphone</span><br><span class="v" data-i18n="contact_phone_v">06 67 12 35 33</span></span>
           <span>→</span>
         </a>
-        <a class="contact-link" href="https://www.linkedin.com/in/akongo-agamaka-0967b863/" target="_blank" rel="noopener">
+        <a class="contact-link" href="https://www.linkedin.com/in/akongo-agamaka-0967b863/" target="_blank" rel="noopener" onclick="trackContact('linkedin')">
           <span><span class="k">LinkedIn</span><br><span class="v">akongo-agamaka</span></span>
           <span>→</span>
         </a>
@@ -854,6 +861,18 @@
       plan_title: "Within my scope"
     }
   };
+
+  function trackNav(type, name){
+    if (typeof gtag === 'function') {
+      gtag('event', 'navigation_click', { type: type, name: name });
+    }
+  }
+
+  function trackContact(method){
+    if (typeof gtag === 'function') {
+      gtag('event', 'contact_click', { method: method });
+    }
+  }
 
   function setLang(lang){
     document.querySelectorAll('[data-i18n]').forEach(el => {
