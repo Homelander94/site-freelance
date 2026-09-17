@@ -482,12 +482,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .offer ul{list-style:none; margin:18px 0 0; padding:0; display:flex; flex-direction:column; gap:10px;}
   .offer li{display:flex; gap:10px; font-size:14.5px; color:var(--text);}
   .offer li::before{content:"✓"; color:var(--accent); font-weight:700;}
-  .offer-tjm{text-align:center; border:1px solid var(--border-soft); border-radius:18px; padding:30px 18px; background:#fff;}
-  .offer-tjm .amount{font-family:'Inter',sans-serif; font-size:44px; font-weight:800; color:var(--text);}
-  .offer-tjm .amount sup{font-size:16px; color:var(--muted); font-weight:500;}
-  .offer-tjm .unit{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--muted-2); text-transform:uppercase; letter-spacing:.06em; margin-top:4px;}
-  .offer-tjm .split{margin:16px 0; height:1px; background:var(--border-soft);}
-  .offer-tjm .flag{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--accent); font-weight:600;}
+  .offer-tjm-group{display:flex; flex-direction:column; gap:14px;}
+  .offer-tjm{text-align:center; border:1px solid var(--border-soft); border-radius:18px; padding:20px 18px; background:#fff;}
+  .offer-tjm.highlight{border-color:var(--accent); box-shadow:0 12px 30px -18px rgba(0,113,227,0.35);}
+  .offer-tjm .amount{font-family:'Inter',sans-serif; font-size:34px; font-weight:800; color:var(--text);}
+  .offer-tjm .amount sup{font-size:14px; color:var(--muted); font-weight:500;}
+  .offer-tjm .unit{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--muted-2); text-transform:uppercase; letter-spacing:.06em; margin-top:4px; font-weight:700;}
+  .offer-tjm .flag{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--accent); font-weight:600; margin-top:8px;}
 
   .contact{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:26px;}
   .contact h2{font-size:clamp(26px,3.4vw,38px); max-width:18ch;}
@@ -529,7 +530,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button type="button" id="btn-fr" class="active" onclick="setLang('fr'); trackNav('menu','lang_fr')">FR</button>
         <button type="button" id="btn-en" onclick="setLang('en'); trackNav('menu','lang_en')">EN</button>
       </div>
-      <div class="status-pill"><span class="dot"></span><span class="long" data-i18n="status">Disponible · à distance</span></div>
+      <div class="status-pill"><span class="dot"></span><span class="long" data-i18n="status">Disponible · présentiel &amp; distance</span></div>
     </div>
   </div>
 </header>
@@ -547,8 +548,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <a class="btn btn-ghost" href="#offre" data-i18n="hero_cta2" onclick="trackNav('cta','offer_cta')">Voir le TJM &amp; les modalités</a>
           </div>
           <div class="tjm-badge">
-            <div class="tjm-item"><div class="num">600&nbsp;€</div><div class="lbl" data-i18n="tjm_lbl1">TJM</div></div>
-            <div class="tjm-item"><div class="num">100%</div><div class="lbl" data-i18n="tjm_lbl2">Télétravail</div></div>
+            <div class="tjm-item"><div class="num">450-600&nbsp;€</div><div class="lbl" data-i18n="tjm_lbl1">TJM</div></div>
+            <div class="tjm-item"><div class="num">2</div><div class="lbl" data-i18n="tjm_lbl2">Formules</div></div>
             <div class="tjm-item"><div class="num">8</div><div class="lbl" data-i18n="tjm_lbl3">Ans d'expérience</div></div>
           </div>
         </div>
@@ -606,7 +607,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="skill-groups">
         <div class="skill-card">
           <h3>Analytics</h3>
-          <div class="chip-row"><span class="chip">GA4</span><span class="chip">Adobe Analytics</span><span class="chip">Looker Studio</span><span class="chip">Firebase</span><span class="chip">Piano</span><span class="chip">Adjust</span></div>
+          <div class="chip-row"><span class="chip">GA4</span><span class="chip">Adobe Analytics</span><span class="chip">Looker Studio</span><span class="chip">Firebase</span><span class="chip">Piano</span><span class="chip">Adjust</span><span class="chip">Power BI</span><span class="chip">Tableau</span><span class="chip">BigQuery</span></div>
         </div>
         <div class="skill-card">
           <h3>TMS</h3>
@@ -652,21 +653,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="xp-list">
 
         <div class="xp-row">
-          <div class="xp-who"><div class="company">Publicis Groupe</div><div class="role" data-i18n="role_publicis">Tracking Expert · Freelance</div></div>
+          <div class="xp-who"><div class="company">Freelance</div><div class="role" data-i18n="role_freelance">Expert tracking &amp; web Analytics · Paris</div></div>
           <div>
-            <div class="xp-bar-wrap"><div class="xp-bar" style="width:14%;"><span data-i18n="dur_publicis">4 mois</span></div></div>
-            <div class="xp-clients">McDonald's · General Motors · Danone · Nestlé (Purina)</div>
+            <div class="xp-bar-wrap"><div class="xp-bar" style="width:84%;"><span data-i18n="dur_freelance">50 mois</span></div></div>
+            <div class="xp-clients">Clarins · McDonald's · General Motors · Danone · Nestlé (Purina)</div>
           </div>
-          <div class="xp-duration" data-i18n="dates_publicis">Juin – Oct 2025</div>
-        </div>
-
-        <div class="xp-row">
-          <div class="xp-who"><div class="company">Clarins</div><div class="role" data-i18n="role_clarins">Tracking Expert · Freelance</div></div>
-          <div>
-            <div class="xp-bar-wrap"><div class="xp-bar" style="width:82%;"><span data-i18n="dur_clarins">49 mois</span></div></div>
-            <div class="xp-clients" data-i18n="ctx_clarins">Migration TrustCommander → Didomi · UA → GA4 360</div>
-          </div>
-          <div class="xp-duration" data-i18n="dates_clarins">Depuis juil. 2022</div>
+          <div class="xp-duration" data-i18n="dates_freelance">Depuis juil. 2022</div>
         </div>
 
         <div class="xp-row">
@@ -747,15 +739,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <ul>
             <li data-i18n="offer_li1">Audit, implémentation ou refonte de plan de marquage</li>
             <li data-i18n="offer_li2">Migration GA4, mise en conformité RGPD / CPRA</li>
-            <li data-i18n="offer_li3">Full télétravail (déplacements ponctuels possibles)</li>
+            <li data-i18n="offer_li3">Présentiel ou à distance, selon les besoins de la mission</li>
             <li data-i18n="offer_li4">Missions courtes ou longues, seul ou en accompagnement d'équipe</li>
           </ul>
         </div>
-        <div class="offer-tjm">
-          <div class="amount">600&nbsp;€<sup data-i18n="offer_perday">/j</sup></div>
-          <div class="unit" data-i18n="offer_unit">TJM indicatif</div>
-          <div class="split"></div>
-          <div class="flag" data-i18n="offer_flag">100% télétravail</div>
+        <div class="offer-tjm-group">
+          <div class="offer-tjm highlight">
+            <div class="amount">600&nbsp;€<sup data-i18n="offer_perday">/j</sup></div>
+            <div class="unit" data-i18n="offer_unit_onsite">Présentiel</div>
+          </div>
+          <div class="offer-tjm">
+            <div class="amount">450&nbsp;€<sup data-i18n="offer_perday2">/j</sup></div>
+            <div class="unit" data-i18n="offer_unit_remote">À distance</div>
+            <div class="flag" data-i18n="offer_flag">Déplacements ponctuels possibles</div>
+          </div>
         </div>
       </div>
     </div>
@@ -793,12 +790,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const translations = {
     fr: {
       nav_expertise: "Expertise", nav_xp: "Expériences", nav_clients: "Clients", nav_offer: "Offre", nav_contact: "Contact",
-      status: "Disponible · à distance",
+      status: "Disponible · présentiel &amp; distance",
       hero_h1: 'Vos tags collectent.<br>Vos données <span class="accent">tiennent la route.</span>',
       hero_lead: "Depuis 8 ans, je conçois, déploie et audite des dispositifs de tracking pour des marques comme EDF, PSA, BMW, Danone ou Clarins. Je maîtrise GA4, TagCommander, GTM et Didomi, de la collecte des données jusqu'à la conformité RGPD.",
       hero_cta1: "Discuter de votre projet",
       hero_cta2: "Voir le TJM &amp; les modalités",
-      tjm_lbl1: "TJM", tjm_lbl2: "Télétravail", tjm_lbl3: "Ans d'expérience",
+      tjm_lbl1: "TJM", tjm_lbl2: "Formules", tjm_lbl3: "Ans d'expérience",
       about_eyebrow: "profil",
       about_h2: "Consultant tracking &amp; web analytics, indépendant",
       about_p1: "Je conçois et implémente des solutions de tracking et de tag management, web et app, adaptées aux enjeux digitaux de chaque client. Expert TagCommander, TrustCommander, GTM, GA4, Didomi et Adobe Analytics, je m'assure que la donnée collectée soit fiable, exploitable et conforme.",
@@ -812,9 +809,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       chip_lang1: "Français (natif)", chip_lang2: "Anglais (courant)",
       xp_eyebrow: "parcours", xp_h2: "Missions récentes",
       xp_note: "Largeur de barre proportionnelle à la durée de la mission.",
-      role_publicis: "Tracking Expert · Freelance", dur_publicis: "4 mois", dates_publicis: "Juin – Oct 2025",
-      role_clarins: "Tracking Expert · Freelance", dur_clarins: "49 mois", dates_clarins: "Depuis juil. 2022",
-      ctx_clarins: "Migration TrustCommander → Didomi · UA → GA4 360",
+      role_freelance: "Expert tracking &amp; web Analytics · Paris", dur_freelance: "50 mois", dates_freelance: "Depuis juil. 2022",
       role_accenture: "Digital Marketing Analyst Senior", dur_accenture: "30 mois",
       role_iprospect: "Consultant Web Analyst", dur_iprospect: "22 mois",
       role_sncf: "Chef de projet web · Ouibus &amp; Oui SNCF", dur_sncf: "20 mois",
@@ -825,9 +820,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       offer_eyebrow2: "disponibilité", offer_h2b: "Prêt à intervenir sur votre dispositif de tracking",
       offer_li1: "Audit, implémentation ou refonte de plan de marquage",
       offer_li2: "Migration GA4, mise en conformité RGPD / CPRA",
-      offer_li3: "Full télétravail (déplacements ponctuels possibles)",
+      offer_li3: "Présentiel ou à distance, selon les besoins de la mission",
       offer_li4: "Missions courtes ou longues, seul ou en accompagnement d'équipe",
-      offer_perday: "/j", offer_unit: "TJM indicatif", offer_flag: "100% télétravail",
+      offer_perday: "/j", offer_perday2: "/j", offer_unit_onsite: "Présentiel", offer_unit_remote: "À distance", offer_flag: "Déplacements ponctuels possibles",
       contact_h2: "Un besoin de tracking à cadrer&nbsp;? Parlons-en.",
       contact_email_k: "Email", contact_phone_k: "Téléphone", contact_phone_v: "06 67 12 35 33",
       footer_copy: "© 2026 Akongo Agamaka · Expert tracking &amp; web analytics",
@@ -836,12 +831,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     },
     en: {
       nav_expertise: "Expertise", nav_xp: "Experience", nav_clients: "Clients", nav_offer: "Offer", nav_contact: "Contact",
-      status: "Available · remote",
+      status: "Available · on-site &amp; remote",
       hero_h1: 'Your tags fire.<br>Your data <span class="accent">holds up.</span>',
       hero_lead: "For the past 8 years, I have designed, deployed and audited tracking systems for brands such as EDF, PSA, BMW, Danone and Clarins. I work across GA4, TagCommander, GTM and Didomi, from data collection through to GDPR compliance.",
       hero_cta1: "Let's talk about your project",
       hero_cta2: "See day rate &amp; terms",
-      tjm_lbl1: "Day rate", tjm_lbl2: "Remote", tjm_lbl3: "Years of experience",
+      tjm_lbl1: "Day rate", tjm_lbl2: "Formulas", tjm_lbl3: "Years of experience",
       about_eyebrow: "profile",
       about_h2: "Independent tracking &amp; web analytics consultant",
       about_p1: "I design and implement tracking and tag management solutions, across web and app, tailored to each client's digital challenges. Expert in TagCommander, TrustCommander, GTM, GA4, Didomi and Adobe Analytics, I make sure the data collected is reliable, usable and compliant.",
@@ -855,9 +850,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       chip_lang1: "French (native)", chip_lang2: "English (fluent)",
       xp_eyebrow: "career", xp_h2: "Recent engagements",
       xp_note: "Bar width proportional to engagement duration.",
-      role_publicis: "Tracking Expert · Freelancer", dur_publicis: "4 months", dates_publicis: "Jun – Oct 2025",
-      role_clarins: "Tracking Expert · Freelancer", dur_clarins: "49 months", dates_clarins: "Since Jul 2022",
-      ctx_clarins: "TrustCommander → Didomi migration · UA → GA4 360",
+      role_freelance: "Tracking &amp; Web Analytics Expert · Paris", dur_freelance: "50 months", dates_freelance: "Since Jul 2022",
       role_accenture: "Digital Marketing Analyst Senior", dur_accenture: "30 months",
       role_iprospect: "Web Analytics Consultant", dur_iprospect: "22 months",
       role_sncf: "Web Project Manager · Ouibus &amp; Oui SNCF", dur_sncf: "20 months",
@@ -868,9 +861,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       offer_eyebrow2: "availability", offer_h2b: "Ready to work on your tracking setup",
       offer_li1: "Tracking audit, implementation or full tagging plan redesign",
       offer_li2: "GA4 migration, GDPR / CPRA compliance",
-      offer_li3: "Fully remote (occasional on-site visits possible)",
+      offer_li3: "On-site or remote, depending on the engagement's needs",
       offer_li4: "Short or long-term engagements, solo or embedded with your team",
-      offer_perday: "/day", offer_unit: "Indicative day rate", offer_flag: "100% remote",
+      offer_perday: "/day", offer_perday2: "/day", offer_unit_onsite: "On-site", offer_unit_remote: "Remote", offer_flag: "Occasional travel possible",
       contact_h2: "Need help scoping a tracking project&nbsp;? Let's talk.",
       contact_email_k: "Email", contact_phone_k: "Phone", contact_phone_v: "+33 6 67 12 35 33",
       footer_copy: "© 2026 Akongo Agamaka · Tracking &amp; web analytics expert",
@@ -881,12 +874,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   function trackNav(clickType, clickLabel){
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'navigation_click', click_type: clickType, click_label: clickLabel });
+    window.dataLayer.push({ event: 'navigation_click', click_type: clickType, click_label: clickLabel, method: undefined });
   }
 
   function trackContact(method){
     window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'contact_click', method: method });
+    window.dataLayer.push({ event: 'contact_click', method: method, click_type: undefined, click_label: undefined });
   }
 
   function setLang(lang){
